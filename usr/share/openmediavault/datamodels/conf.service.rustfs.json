@@ -1,0 +1,65 @@
+{
+	"type": "config",
+	"id": "conf.service.rustfs",
+	"title": "RustFS",
+	"queryinfo": {
+		"xpath": ".//services/rustfs",
+		"iterable": false
+	},
+	"properties": {
+		"enable": {
+			"type": "boolean",
+			"default": false
+		},
+		"port": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 65535,
+			"default": 9000
+		},
+		"consolePort": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 65535,
+			"default": 9001
+		},
+		"consoleEnable": {
+			"type": "boolean",
+			"default": true
+		},
+		"dataRef": {
+			"type": "string",
+			"oneOf": [{
+				"type": "string",
+				"format": "uuidv4"
+			}, {
+				"type": "string",
+				"maxLength": 0
+			}],
+			"default": ""
+		},
+		"accessKey": {
+			"type": "string",
+			"default": ""
+		},
+		"secretKey": {
+			"type": "string",
+			"default": ""
+		},
+		"logLevel": {
+			"type": "string",
+			"enum": [
+				"trace",
+				"debug",
+				"info",
+				"warn",
+				"error"
+			],
+			"default": "error"
+		},
+		"extraOptions": {
+			"type": "string",
+			"default": ""
+		}
+	}
+}

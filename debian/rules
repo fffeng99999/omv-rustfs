@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@
+
+# The rustfs binary is a prebuilt, statically linked Rust executable.
+# Skip the debhelper steps that would try to strip, compress debug info,
+# compute shared-library dependencies or scan for shared libraries (the
+# cross objdump/binutils are not present on the runner).
+override_dh_dwz:
+	:
+
+override_dh_strip:
+	:
+
+override_dh_strip_nondeterminism:
+	:
+
+override_dh_shlibdeps:
+	:
+
+override_dh_makeshlibs:
+	:
+
+# Windows checkouts do not preserve the executable bit; force the
+# correct modes on the shipped scripts and binary before packaging.
+execute_before_dh_installdeb:
+	chmod 0755 debian/openmediavault-rustfs.postinst
+	chmod 0755 debian/openmediavault-rustfs.prerm
+	chmod 0755 debian/openmediavault-rustfs.postrm
+	chmod 0755 debian/openmediavault-rustfs/usr/sbin/omv-rustfs-ctl || true
+	chmod 0755 debian/openmediavault-rustfs/usr/bin/rustfs || true
+	chmod 0755 debian/openmediavault-rustfs/usr/share/openmediavault/confdb/create.d/*.sh

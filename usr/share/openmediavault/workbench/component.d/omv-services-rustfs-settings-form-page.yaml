@@ -1,0 +1,195 @@
+version: "1.0"
+type: component
+data:
+  name: omv-services-rustfs-settings-form-page
+  type: formPage
+  config:
+    request:
+      service: Rustfs
+      get:
+        method: get
+        transform:
+          statusText: "{{ statusText | translate }}"
+      post:
+        method: set
+    hints:
+      - type: info
+        text: _("RustFS is an S3 compatible object storage server. Select the data shared folder first, then enable the service and click Save and then Apply. Buckets, users and policies are managed in the RustFS console.")
+        dismissible: true
+        stateId: 3f2b7c14-9d58-4a61-b0e7-5c8a1d6f2e93
+    fields:
+      - type: divider
+        title: _("Status")
+      - type: textInput
+        name: statusText
+        label: _("Service status")
+        hint: _("Running means the RustFS service is active on this machine.")
+        readonly: true
+        submitValue: false
+      - type: textInput
+        name: version
+        label: _("Bundled version")
+        hint: _("The RustFS version that is bundled in this package.")
+        readonly: true
+        submitValue: false
+      - type: textInput
+        name: dataPath
+        label: _("Data directory")
+        hint: _("The resolved path of the selected data shared folder.")
+        readonly: true
+        submitValue: false
+
+      - type: divider
+        title: _("Service")
+      - type: checkbox
+        name: enable
+        label: _("Enabled")
+        hint: _("Start the RustFS service automatically at boot. A data shared folder must be selected first. Click Save and then Apply to take effect.")
+        value: false
+      - type: sharedFolderSelect
+        name: dataRef
+        label: _("Data shared folder")
+        hint: _("The shared folder that holds the RustFS object data. It must be located on a mounted filesystem. RustFS cannot be started before it is selected.")
+        hasEmptyOption: true
+        value: ""
+        validators:
+          requiredIf:
+            operator: truthy
+            arg0:
+              prop: enable
+
+      - type: divider
+        title: _("Network")
+      - type: numberInput
+        name: port
+        label: _("S3 API port")
+        hint: _("The port the S3 compatible API listens on. The default is 9000.")
+        value: 9000
+        validators:
+          min: 1
+          max: 65535
+          patternType: port
+      - type: numberInput
+        name: consolePort
+        label: _("Console port")
+        hint: _("The port of the RustFS web console. The default is 9001. It must differ from the S3 API port.")
+        value: 9001
+        validators:
+          min: 1
+          max: 65535
+          patternType: port
+      - type: checkbox
+        name: consoleEnable
+        label: _("Enable console")
+        hint: _("Serve the RustFS web console. Disable it to expose only the S3 API.")
+        value: true
+
+      - type: divider
+        title: _("Credentials")
+      - type: textInput
+        name: accessKey
+        label: _("Access key")
+        hint: _("Used as the user name by every S3 client. It is generated randomly at install time.")
+        readonly: true
+        submitValue: false
+      - type: textInput
+        name: secretKey
+        label: _("Secret key")
+        hint: _("Used as the password by every S3 client. Keep it secret and rotate it with the Regenerate credentials button.")
+        readonly: true
+        submitValue: false
+
+      - type: divider
+        title: _("Logging")
+      - type: select
+        name: logLevel
+        label: _("Log level")
+        value: "error"
+        store:
+          data:
+            - - "trace"
+              - _("Trace")
+            - - "debug"
+              - _("Debug")
+            - - "info"
+              - _("Info")
+            - - "warn"
+              - _("Warning")
+            - - "error"
+              - _("Error")
+
+      - type: divider
+        title: _("Advanced")
+      - type: textarea
+        name: extraOptions
+        label: _("Extra environment options")
+        hint: _("Additional lines appended verbatim to the generated environment file. Use only for settings that are not covered by this form. Invalid values prevent RustFS from starting.")
+        rows: 6
+        monospace: true
+        value: ""
+    buttons:
+      - text: _("Start")
+        execute:
+          type: request
+          request:
+            service: Rustfs
+            method: start
+            successNotification: _("RustFS service started.")
+      - text: _("Stop")
+        execute:
+          type: request
+          request:
+            service: Rustfs
+            method: stop
+            successNotification: _("RustFS service stopped.")
+      - text: _("Restart")
+        confirmationDialogConfig:
+          template: confirmation
+          message: _("Do you really want to restart the RustFS service?")
+        execute:
+          type: request
+          request:
+            service: Rustfs
+            method: restart
+            successNotification: _("RustFS service restarted.")
+      - text: _("Regenerate credentials")
+        confirmationDialogConfig:
+          template: confirmation
+          message: _("Do you really want to generate a new access and secret key pair? Every S3 client using the current credentials must be reconfigured.")
+        execute:
+          type: request
+          request:
+            service: Rustfs
+            method: regenerateCredentials
+            successNotification: _("A new access and secret key pair was generated. Click Apply to deploy it.")
+            reloadDataOnSuccess: true
+      - text: _("View logs")
+        execute:
+          type: taskDialog
+          taskDialog:
+            config:
+              title: _("RustFS logs")
+              startOnInit: true
+              request:
+                service: Rustfs
+                method: getLog
+      - text: _("View generated config")
+        execute:
+          type: taskDialog
+          taskDialog:
+            config:
+              title: _("Generated environment file")
+              width: "70%"
+              startOnInit: true
+              request:
+                service: Rustfs
+                method: getShowConfig
+      - text: _("Open console")
+        execute:
+          type: url
+          url: "/externalRedirect/{{ ['http://', location() | get('hostname'), ':', consolePort] | join | encodeuricomponent }}"
+      - template: cancel
+        execute:
+          type: url
+          url: "/services/rustfs"
+      - template: submit

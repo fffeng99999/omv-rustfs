@@ -1,0 +1,10 @@
+version: "1.0"
+type: navigation-item
+data:
+  path: "services.rustfs"
+  text: _("RustFS")
+  icon: "mdi:database"
+  url: "/services/rustfs"
+  permissions:
+    role:
+    - admin

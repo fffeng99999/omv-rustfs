@@ -1,0 +1,183 @@
+# Simplified Chinese translation for openmediavault-rustfs.
+# Copyright (C) 2026 ${GITHUB_USER}
+# This file is distributed under the same license as the openmediavault-rustfs package.
+# ${GITHUB_USER}, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-rustfs 8.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-08 12:00+0800\n"
+"PO-Revision-Date: 2026-10-08 12:00+0800\n"
+"Last-Translator: ${GITHUB_USER} <${GITHUB_USER}@users.noreply.github.com>\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "RustFS"
+msgstr "RustFS"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Updated RustFS settings."
+msgstr "已更新 RustFS 设置。"
+
+msgid "RustFS is an S3 compatible object storage server. Select the data shared folder first, then enable the service and click Save and then Apply. Buckets, users and policies are managed in the RustFS console."
+msgstr "RustFS 是兼容 S3 的对象存储服务器。请先选择数据共享文件夹，然后启用服务并点击「保存」，再点击「应用」。存储桶、用户和策略均在 RustFS 控制台中管理。"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Service status"
+msgstr "服务状态"
+
+msgid "Running means the RustFS service is active on this machine."
+msgstr "“运行中”表示 RustFS 服务已在本机运行。"
+
+msgid "Bundled version"
+msgstr "内置版本"
+
+msgid "The RustFS version that is bundled in this package."
+msgstr "本插件包中内置的 RustFS 版本。"
+
+msgid "Data directory"
+msgstr "数据目录"
+
+msgid "The resolved path of the selected data shared folder."
+msgstr "所选数据共享文件夹解析后的实际路径。"
+
+msgid "Service"
+msgstr "服务"
+
+msgid "Enabled"
+msgstr "已启用"
+
+msgid "Start the RustFS service automatically at boot. A data shared folder must be selected first. Click Save and then Apply to take effect."
+msgstr "开机时自动启动 RustFS 服务。必须先选择数据共享文件夹。点击「保存」，再点击「应用」后生效。"
+
+msgid "Data shared folder"
+msgstr "数据共享文件夹"
+
+msgid "The shared folder that holds the RustFS object data. It must be located on a mounted filesystem. RustFS cannot be started before it is selected."
+msgstr "用于存放 RustFS 对象数据的共享文件夹，必须位于已挂载的文件系统上。在完成选择之前 RustFS 无法启动。"
+
+msgid "Network"
+msgstr "网络"
+
+msgid "S3 API port"
+msgstr "S3 API 端口"
+
+msgid "The port the S3 compatible API listens on. The default is 9000."
+msgstr "兼容 S3 的 API 监听端口，默认为 9000。"
+
+msgid "Console port"
+msgstr "控制台端口"
+
+msgid "The port of the RustFS web console. The default is 9001. It must differ from the S3 API port."
+msgstr "RustFS Web 控制台端口，默认为 9001，且必须与 S3 API 端口不同。"
+
+msgid "Enable console"
+msgstr "启用控制台"
+
+msgid "Serve the RustFS web console. Disable it to expose only the S3 API."
+msgstr "提供 RustFS Web 控制台。关闭后仅暴露 S3 API。"
+
+msgid "Credentials"
+msgstr "凭据"
+
+msgid "Access key"
+msgstr "Access Key"
+
+msgid "Used as the user name by every S3 client. It is generated randomly at install time."
+msgstr "所有 S3 客户端用它作为用户名，安装时随机生成。"
+
+msgid "Secret key"
+msgstr "Secret Key"
+
+msgid "Used as the password by every S3 client. Keep it secret and rotate it with the Regenerate credentials button."
+msgstr "所有 S3 客户端用它作为密码，请妥善保密。可使用「重新生成凭据」按钮轮换。"
+
+msgid "Logging"
+msgstr "日志"
+
+msgid "Log level"
+msgstr "日志级别"
+
+msgid "Trace"
+msgstr "Trace"
+
+msgid "Debug"
+msgstr "Debug"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Warning"
+msgstr "警告"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "Extra environment options"
+msgstr "额外环境变量项"
+
+msgid "Additional lines appended verbatim to the generated environment file. Use only for settings that are not covered by this form. Invalid values prevent RustFS from starting."
+msgstr "追加写入所生成环境文件的原始行。仅用于本表单未覆盖的设置，取值非法会导致 RustFS 无法启动。"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Stop"
+msgstr "停止"
+
+msgid "Restart"
+msgstr "重启"
+
+msgid "RustFS service started."
+msgstr "RustFS 服务已启动。"
+
+msgid "RustFS service stopped."
+msgstr "RustFS 服务已停止。"
+
+msgid "Do you really want to restart the RustFS service?"
+msgstr "确定要重启 RustFS 服务吗？"
+
+msgid "RustFS service restarted."
+msgstr "RustFS 服务已重启。"
+
+msgid "Regenerate credentials"
+msgstr "重新生成凭据"
+
+msgid "Do you really want to generate a new access and secret key pair? Every S3 client using the current credentials must be reconfigured."
+msgstr "确定要生成新的 Access Key 与 Secret Key 吗？所有正在使用当前凭据的 S3 客户端都需要重新配置。"
+
+msgid "A new access and secret key pair was generated. Click Apply to deploy it."
+msgstr "已生成新的 Access Key 与 Secret Key。点击「应用」后生效。"
+
+msgid "View logs"
+msgstr "查看日志"
+
+msgid "RustFS logs"
+msgstr "RustFS 日志"
+
+msgid "View generated config"
+msgstr "查看生成的配置"
+
+msgid "Generated environment file"
+msgstr "生成的环境文件"
+
+msgid "Open console"
+msgstr "打开控制台"
+
+msgid "Running"
+msgstr "运行中"
+
+msgid "Stopped"
+msgstr "已停止"

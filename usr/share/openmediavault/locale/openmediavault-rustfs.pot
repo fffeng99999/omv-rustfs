@@ -1,0 +1,182 @@
+# Translation template for openmediavault-rustfs.
+# Copyright (C) 2026 ${GITHUB_USER}
+# This file is distributed under the same license as the openmediavault-rustfs package.
+# ${GITHUB_USER}, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-rustfs 8.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-08 12:00+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "RustFS"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Updated RustFS settings."
+msgstr ""
+
+msgid "RustFS is an S3 compatible object storage server. Select the data shared folder first, then enable the service and click Save and then Apply. Buckets, users and policies are managed in the RustFS console."
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Service status"
+msgstr ""
+
+msgid "Running means the RustFS service is active on this machine."
+msgstr ""
+
+msgid "Bundled version"
+msgstr ""
+
+msgid "The RustFS version that is bundled in this package."
+msgstr ""
+
+msgid "Data directory"
+msgstr ""
+
+msgid "The resolved path of the selected data shared folder."
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Start the RustFS service automatically at boot. A data shared folder must be selected first. Click Save and then Apply to take effect."
+msgstr ""
+
+msgid "Data shared folder"
+msgstr ""
+
+msgid "The shared folder that holds the RustFS object data. It must be located on a mounted filesystem. RustFS cannot be started before it is selected."
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "S3 API port"
+msgstr ""
+
+msgid "The port the S3 compatible API listens on. The default is 9000."
+msgstr ""
+
+msgid "Console port"
+msgstr ""
+
+msgid "The port of the RustFS web console. The default is 9001. It must differ from the S3 API port."
+msgstr ""
+
+msgid "Enable console"
+msgstr ""
+
+msgid "Serve the RustFS web console. Disable it to expose only the S3 API."
+msgstr ""
+
+msgid "Credentials"
+msgstr ""
+
+msgid "Access key"
+msgstr ""
+
+msgid "Used as the user name by every S3 client. It is generated randomly at install time."
+msgstr ""
+
+msgid "Secret key"
+msgstr ""
+
+msgid "Used as the password by every S3 client. Keep it secret and rotate it with the Regenerate credentials button."
+msgstr ""
+
+msgid "Logging"
+msgstr ""
+
+msgid "Log level"
+msgstr ""
+
+msgid "Trace"
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Extra environment options"
+msgstr ""
+
+msgid "Additional lines appended verbatim to the generated environment file. Use only for settings that are not covered by this form. Invalid values prevent RustFS from starting."
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "Restart"
+msgstr ""
+
+msgid "RustFS service started."
+msgstr ""
+
+msgid "RustFS service stopped."
+msgstr ""
+
+msgid "Do you really want to restart the RustFS service?"
+msgstr ""
+
+msgid "RustFS service restarted."
+msgstr ""
+
+msgid "Regenerate credentials"
+msgstr ""
+
+msgid "Do you really want to generate a new access and secret key pair? Every S3 client using the current credentials must be reconfigured."
+msgstr ""
+
+msgid "A new access and secret key pair was generated. Click Apply to deploy it."
+msgstr ""
+
+msgid "View logs"
+msgstr ""
+
+msgid "RustFS logs"
+msgstr ""
+
+msgid "View generated config"
+msgstr ""
+
+msgid "Generated environment file"
+msgstr ""
+
+msgid "Open console"
+msgstr ""
+
+msgid "Running"
+msgstr ""
+
+msgid "Stopped"
+msgstr ""

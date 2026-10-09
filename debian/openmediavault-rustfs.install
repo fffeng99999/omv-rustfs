@@ -1,0 +1,5 @@
+usr/share/openmediavault/* usr/share/openmediavault/
+usr/sbin/* usr/sbin/
+usr/bin/rustfs usr/bin/
+usr/share/rustfs/* usr/share/rustfs/
+srv/* srv/

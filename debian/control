@@ -1,0 +1,25 @@
+Source: openmediavault-rustfs
+Section: net
+XB-Plugin-Section: storage
+XB-Plugin-Architecture: amd64, arm64
+Priority: optional
+Maintainer: fffeng99999 <fffeng99999@users.noreply.github.com>
+Build-Depends: debhelper (>= 12)
+Standards-Version: 3.9.6
+Homepage: https://github.com/fffeng99999/omv-rustfs
+
+Package: openmediavault-rustfs
+Architecture: any
+Depends: openmediavault (>= 8.0)
+Priority: optional
+Description: openmediavault RustFS plugin
+ Manage the RustFS S3 compatible object storage server from the
+ OpenMediaVault web interface. The upstream rustfs binary is bundled in
+ this package and runs as a native systemd service; the settings (data
+ shared folder, API and console ports, credentials, log level) are
+ stored in the OMV configuration database and rendered to
+ /etc/default/rustfs and the systemd unit on Apply.
+ Includes a generated data directory with an enable guard, automatically
+ generated access and secret keys with a rotation button, start, stop,
+ restart, a log viewer, the generated configuration preview and Chinese
+ translations.

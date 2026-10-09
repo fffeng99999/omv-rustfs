@@ -1,0 +1,8 @@
+version: "1.0"
+type: route
+data:
+  url: "/services/rustfs/settings"
+  title: _("Settings")
+  editing: true
+  notificationTitle: _("Updated RustFS settings.")
+  component: omv-services-rustfs-settings-form-page

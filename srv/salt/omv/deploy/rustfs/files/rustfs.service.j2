@@ -1,0 +1,37 @@
+{{ pillar['headers']['multiline'] -}}
+[Unit]
+Description=RustFS Object Storage Server (managed by OpenMediaVault)
+Documentation=https://rustfs.com/docs/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=root
+Group=root
+WorkingDirectory=/usr/local
+EnvironmentFile=-/etc/default/rustfs
+ExecStart=/usr/bin/rustfs
+LimitNOFILE=1048576
+LimitNPROC=32768
+TasksMax=infinity
+Restart=always
+RestartSec=10s
+OOMScoreAdjust=-1000
+SendSIGKILL=no
+TimeoutStartSec=30s
+TimeoutStopSec=30s
+NoNewPrivileges=true
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target

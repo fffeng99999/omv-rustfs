@@ -1,0 +1,15 @@
+# rustfs binary and its version stamp are staged at package build time
+usr/bin/rustfs
+usr/share/rustfs/VERSION
+
+# dpkg-buildpackage artifacts
+*.deb
+*.buildinfo
+*.changes
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/openmediavault-rustfs/
+debian/openmediavault-rustfs.substvars
+debian/tmp/
+../*.deb
