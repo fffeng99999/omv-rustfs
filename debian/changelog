@@ -1,4 +1,4 @@
-openmediavault-rustfs (8.0.1+rustfs1.0.1) stable; urgency=medium
+openmediavault-rustfs (8.0.1+rustfs1.0.4) stable; urgency=medium
 
   * Initial release: RustFS S3 compatible object storage plugin for
     OpenMediaVault 8.x.
@@ -22,4 +22,4 @@ openmediavault-rustfs (8.0.1+rustfs1.0.1) stable; urgency=medium
       preview and an 'Open console' button.
     - Simplified and Traditional Chinese translations included.
 
- -- fffeng99999 <fffeng99999@users.noreply.github.com>  Wed, 08 Oct 2026 12:00:00 +0800
+ -- ${GITHUB_USER} <${GITHUB_USER}@users.noreply.github.com>  Wed, 08 Oct 2026 12:00:00 +0800

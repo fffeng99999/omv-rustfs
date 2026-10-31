@@ -233,7 +233,7 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->runCtl(["restart"]);
     }
 
-    private function execCtlTask($context, string $op): string
+    private function execCtlTask(string $op): string
     {
         return $this->execBgProc(
             function ($bgStatusFilename, $bgOutputFilename) use ($op) {
@@ -254,7 +254,7 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, [
             "role" => OMV_ROLE_ADMINISTRATOR
         ]);
-        return $this->execCtlTask($context, "logs");
+        return $this->execCtlTask("logs");
     }
 
     public function getShowConfig($params, $context)
@@ -262,6 +262,6 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, [
             "role" => OMV_ROLE_ADMINISTRATOR
         ]);
-        return $this->execCtlTask($context, "showconfig");
+        return $this->execCtlTask("showconfig");
     }
 }

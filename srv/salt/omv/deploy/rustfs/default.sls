@@ -23,7 +23,7 @@
 {% set config = salt['omv_conf.get']('conf.service.rustfs') %}
 {% set dataRef = config.dataRef | default('') %}
 {% if dataRef | length > 0 %}
-{% set datapath = salt['omv_conf.get_sharedfolder_path'](dataRef) %}
+{% set datapath = salt['omv_conf.get_sharedfolder_path'](dataRef).rstrip('/') %}
 {% else %}
 {% set datapath = '' %}
 {% endif %}
@@ -79,6 +79,8 @@ start_rustfs_service:
   service.running:
     - name: rustfs
     - enable: True
+    - require:
+      - file: create_rustfs_log_directory
     - watch:
       - file: render_rustfs_env_file
       - file: create_rustfs_systemd_unit_file

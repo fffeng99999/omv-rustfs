@@ -125,7 +125,15 @@ else
 fi
 
 echo "Extracting ..."
-unzip -q -o "${WORKDIR}/${ASSET}" -d "${WORKDIR}/pkg"
+mkdir -p "${WORKDIR}/pkg"
+if command -v unzip >/dev/null 2>&1; then
+	unzip -q -o "${WORKDIR}/${ASSET}" -d "${WORKDIR}/pkg"
+elif command -v python3 >/dev/null 2>&1; then
+	python3 -c "import zipfile; zipfile.ZipFile('${WORKDIR}/${ASSET}').extractall('${WORKDIR}/pkg')"
+else
+	echo "ERROR: neither unzip nor python3 is available to extract ${ASSET}" >&2
+	exit 1
+fi
 
 BIN="$(find "${WORKDIR}/pkg" -type f -name rustfs | head -n 1)"
 if [ -z "$BIN" ]; then

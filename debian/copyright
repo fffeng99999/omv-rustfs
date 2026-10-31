@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: openmediavault-rustfs
-Source: https://github.com/fffeng99999/omv-rustfs
+Source: https://github.com/${GITHUB_USER}/omv-rustfs
 
 Files: *
 Copyright: 2026 ${GITHUB_USER} <${GITHUB_USER}@users.noreply.github.com>

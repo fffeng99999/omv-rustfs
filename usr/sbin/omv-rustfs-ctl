@@ -42,9 +42,13 @@ esac
 # database. The value may be quoted (string) or not (boolean/number), so
 # the quotes are stripped and the result trimmed.
 conf_value() {
-	omv-confdbadm read "$1" 2>/dev/null | tr -d '\n' \
-		| sed -n "s/.*\"$2\"[[:space:]]*:[[:space:]]*\([^,}]*\).*/\1/p" \
-		| tr -d '"' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+	if command -v jq >/dev/null 2>&1; then
+		omv-confdbadm read "$1" 2>/dev/null | jq -r ".${2} // empty"
+	else
+		omv-confdbadm read "$1" 2>/dev/null | tr -d '\n' \
+			| sed -n "s/.*\"$2\"[[:space:]]*:[[:space:]]*\([^,}]*\).*/\1/p" \
+			| tr -d '"' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+	fi
 }
 
 # Absolute path of the configured data shared folder (empty when unset).
