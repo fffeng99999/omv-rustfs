@@ -55,7 +55,10 @@ conf_value() {
 data_path() {
 	_ref="$(conf_value conf.service.rustfs dataRef)"
 	[ -n "$_ref" ] || return 0
-	omv_get_sharedfolder_path "$_ref" 2>/dev/null || true
+	_p="$(omv_get_sharedfolder_path "$_ref" 2>/dev/null || true)"
+	if [ -n "$_p" ]; then
+		echo "$_p"
+	fi
 }
 
 # The service may only run once a data directory has been rendered into the
