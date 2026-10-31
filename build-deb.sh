@@ -97,6 +97,9 @@ echo "Debian arch: ${ARCH} (upstream: ${UARCH})"
 echo "Asset      : ${ASSET}"
 echo "URL        : ${URL}"
 
+# Prefer /var/tmp over /tmp because the RustFS binary is large (~350MB uncompressed)
+# and /tmp is often mounted on a small tmpfs (e.g. 512MB RAM VMs) which would run out of space.
+export TMPDIR="${TMPDIR:-/var/tmp}"
 WORKDIR="$(mktemp -d)"
 trap 'rm -rf "$WORKDIR"' EXIT
 
