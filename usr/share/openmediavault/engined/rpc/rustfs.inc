@@ -214,6 +214,17 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, [
             "role" => OMV_ROLE_ADMINISTRATOR
         ]);
+        $settings = $this->getSettingsObject($context);
+        if (empty($settings["dataRef"])) {
+            throw new \OMV\Exception(
+                "RustFS data shared folder is not configured. Please select a shared folder, enable the service, click Save and then click Apply."
+            );
+        }
+        if (!file_exists("/etc/systemd/system/rustfs.service")) {
+            throw new \OMV\Exception(
+                "RustFS service is not deployed yet. Please click Save and then click Apply in the yellow bar at the top."
+            );
+        }
         $this->runCtl(["start"]);
     }
 
@@ -222,6 +233,9 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, [
             "role" => OMV_ROLE_ADMINISTRATOR
         ]);
+        if (!file_exists("/etc/systemd/system/rustfs.service")) {
+            return;
+        }
         $this->runCtl(["stop"]);
     }
 
@@ -230,6 +244,17 @@ class OMVRpcServiceRustfs extends \OMV\Rpc\ServiceAbstract
         $this->validateMethodContext($context, [
             "role" => OMV_ROLE_ADMINISTRATOR
         ]);
+        $settings = $this->getSettingsObject($context);
+        if (empty($settings["dataRef"])) {
+            throw new \OMV\Exception(
+                "RustFS data shared folder is not configured. Please select a shared folder, enable the service, click Save and then click Apply."
+            );
+        }
+        if (!file_exists("/etc/systemd/system/rustfs.service")) {
+            throw new \OMV\Exception(
+                "RustFS service is not deployed yet. Please click Save and then click Apply in the yellow bar at the top."
+            );
+        }
         $this->runCtl(["restart"]);
     }
 
